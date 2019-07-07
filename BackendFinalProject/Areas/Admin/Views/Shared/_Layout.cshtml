@@ -297,7 +297,7 @@
                                     </a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="@Url.Action("Index", "Login")">
+                                    <a href="@Url.Action("SignOut", "Login")">
                                         <i class="fa fa-fw fa-sign-out"></i> Logout
                                     </a>
                                 </div>
@@ -326,26 +326,34 @@
                         </div>
                     </div>
                     <ul class="navigation">
-                        <li class="active" id="active">
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Home" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" id="active">
                             <a href="@Url.Action("Index", "Home")">
                                 <i class="text-primary menu-icon fa fa-fw fa-dashboard"></i>
                                 <span class="mm-text ">Dashboard</span>
                                 <span class="arrow"></span>
                             </a>
                         </li>
-                        <li>
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Clubinfo" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" id="active">
                             <a href="@Url.Action("Index", "Clubinfo")">
                                 <i class="text-success menu-icon fa fa-fw fa-info-circle"></i>
                                 <span class="mm-text">Club Info</span>
+                                @if (ViewContext.RouteData.Values["Controller"].ToString() == "Clubinfo")
+                                {
+                                    <span class="arrow"></span>
+                                }
                             </a>
                         </li>
-                        <li>
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Packages" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" id="active">
                             <a href="@Url.Action("Index", "Packages")">
                                 <i class="text-primary menu-icon fa fa-th fa-info-circle"></i>
                                 <span class="mm-text">Packages</span>
+                                @if (ViewContext.RouteData.Values["Controller"].ToString() == "Packages")
+                                {
+                                    <span class="arrow"></span>
+                                }
                             </a>
                         </li>
-           
+
                         <li class="menu-dropdown">
                             <a href="#">
                                 <i class="text-warning menu-icon fa fa-fw fa-graduation-cap"></i>
@@ -353,10 +361,14 @@
                                 <span class="fa fa-angle-down pull-right"></span>
                             </a>
                             <ul class="sub-menu">
-                                <li>
+                                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "CourseSchedule" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" id="active">
                                     <a href="@Url.Action("Index", "CourseSchedule")">
                                         <i class="text-primary fa fa-fw fa-th"></i> Course Schedule
                                     </a>
+                                    @if (ViewContext.RouteData.Values["Controller"].ToString() == "CourseSchedule")
+                                    {
+                                        <span class="arrow"></span>
+                                    }
                                 </li>
                                 <li>
                                     <a href="@Url.Action("Courses","CourseSchedule")">
@@ -404,20 +416,24 @@
                                 </li>
                             </ul>
                         </li>
-                       
-                        <li>
+
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Login" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" id="active">
                             <a href="@Url.Action("Index", "Login")">
                                 <i class="text-danger menu-icon fa fa-sign-in"></i>
                                 <span class="mm-text">Login</span>
+                                @if (ViewContext.RouteData.Values["Controller"].ToString() == "Login")
+                                {
+                                    <span class="arrow"></span>
+                                }
                             </a>
                         </li>
                         <li>
-                            <a href="404.html">
+                            <a href="@Url.Action("Error404", "Home")">
                                 <i class="text-warning menu-icon fa fa-anchor"></i>
                                 <span class="mm-text">404</span>
                             </a>
                         </li>
-                        
+
                         <li class="menu-dropdown">
                             <a href="#">
                                 <i class="text-primary menu-icon fa fa-sitemap"></i>

@@ -11,6 +11,15 @@ namespace BackendFinalProject.Areas.Admin.Controllers
         // GET: Admin/Home
         public ActionResult Index()
         {
+            if (Session["isLogin"] != null && (bool)Session["isLogin"] == true)
+            {
+                return View();
+            }
+            return RedirectToAction("Index", "Login");
+        }
+
+        public ActionResult Error404()
+        {
             return View();
         }
     }
